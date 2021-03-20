@@ -1,7 +1,7 @@
 import React from 'react';
 import {animedata} from '../Animedata';
 import Navbar from './Navbar';
-import {addAnime} from '../actions';
+import {addAnime,displayFavourite} from '../actions';
 import Moviecard from './MovieCard';
 
 class App extends React.Component {
@@ -25,22 +25,25 @@ class App extends React.Component {
         }
         return false;
   }
-  
+  changeTab=(val)=>{
+    this.props.store.dispatch(displayFavourite(val))
+  }
   render(){
-    const {list} = this.props.store.getState(); //{list:[],favourites:[]}
+    const {list,favourites,showFavourites} = this.props.store.getState(); //{list:[],favourites:[]}
   // const animes = this.props.store.getState(); //stae:[]
   
   console.log('Render',this.props.store.getState());
+  const displayAnime= showFavourites?favourites:list;
   return (
     <div className="App">
       <Navbar/>
       <div className="main">
         <div className="tabs">
-          <div className="tab" onClick={this.renanime}>Anime</div>
-          <div className="tab">Favourites</div>
+          <div className={`tab ${(showFavourites?'':'active-tabs')}`} onClick={()=> this.changeTab(false)}>Anime</div>
+          <div className={`tab ${(showFavourites?'active-tabs':'')}`} onClick={()=> this.changeTab(true)}>Favourites</div>
         </div>
         <div className="List">
-            {list.map((anime,index)=>(
+            {displayAnime.map((anime,index)=>(
               <Moviecard 
               anime = {anime} 
               key={`anime-${index}`} 
@@ -49,16 +52,7 @@ class App extends React.Component {
               />
             ))}
         </div>
-        {/* <div className="List">
-            {favourite1.map((anime,index)=>(
-              <Moviecard 
-              anime = {anime} 
-              key={`anime-${index}`} 
-              dispatch={this.props.store.dispatch}
-              isFavourite={this.isFavouriteAnime(anime)}
-              />
-            ))}
-        </div> */}
+        
       </div>
     </div>
   );
