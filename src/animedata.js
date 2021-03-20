@@ -1,4 +1,4 @@
-export const animedata= [
+export const Animedata= [
     {
         "mal_id": 5114,
         Rank: 1,

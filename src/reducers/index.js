@@ -1,8 +1,8 @@
 //always return the new state
-export default function movies(state=[],action){
+export default function animes(state=[],action){
     //state same rehra we are not changing the state
-   if(action.type=='ADD_MOVIES'){
-       return action.movies;
+   if(action.type==='ADD_MOVIES'){
+       return action.animes;
    } 
 
    return state;
