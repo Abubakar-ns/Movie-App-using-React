@@ -1,5 +1,5 @@
 import React from 'react';
-import {Animedata} from '../Animedata';
+import {animedata} from '../Animedata';
 import Navbar from './Navbar';
 import Moviecard from './MovieCard';
 function App() {
@@ -12,8 +12,8 @@ function App() {
           <div className="tab">Favourites</div>
         </div>
         <div className="List">
-            {Animedata.map(anime=>(
-              <Moviecard anime = {anime}/>
+            {animedata.map((anime,index)=>(
+              <Moviecard anime = {anime} key={`anime-${index}`}/>
             ))}
             {/* {data.map(movie=>(
               <MovieCard movie = {movie}/>

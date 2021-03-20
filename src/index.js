@@ -9,6 +9,14 @@ import animes from './reducers';
 
 const store = createStore(animes);
 console.log('store',store);
+console.log('Before State',store.getState());
+
+
+store.dispatch({
+  type: 'ADD_MOVIES',
+  animes: [{name: 'Jujutsu Kaisen'}]
+});
+console.log('After State',store.getState());
 ReactDOM.render(<App />,document.getElementById('root'));
 
 
