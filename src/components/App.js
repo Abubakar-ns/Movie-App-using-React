@@ -16,22 +16,49 @@ class App extends React.Component {
      store.dispatch(addAnime(animedata));
     console.log('State',store.getState());
   }
+  isFavouriteAnime=(anime)=>{
+      const {favourites} = this.props.store.getState();
+      const index= favourites.indexOf(anime);
+        if(index!==-1){
+          //found the movie in favourties
+          return true;
+        }
+        return false;
+  }
+  
   render(){
     const {list} = this.props.store.getState(); //{list:[],favourites:[]}
   // const animes = this.props.store.getState(); //stae:[]
+  
+  console.log('Render',this.props.store.getState());
   return (
     <div className="App">
       <Navbar/>
       <div className="main">
         <div className="tabs">
-          <div className="tab">Anime</div>
+          <div className="tab" onClick={this.renanime}>Anime</div>
           <div className="tab">Favourites</div>
         </div>
         <div className="List">
             {list.map((anime,index)=>(
-              <Moviecard anime = {anime} key={`anime-${index}`}/>
+              <Moviecard 
+              anime = {anime} 
+              key={`anime-${index}`} 
+              dispatch={this.props.store.dispatch}
+              isFavourite={this.isFavouriteAnime(anime)}
+              />
             ))}
         </div>
+        {/* <div className="List">
+            {favourite1.map((anime,index)=>(
+              <Moviecard 
+              anime = {anime} 
+              key={`anime-${index}`} 
+              dispatch={this.props.store.dispatch}
+              isFavourite={this.isFavouriteAnime(anime)}
+              />
+            ))}
+        </div> */}
       </div>
     </div>
   );

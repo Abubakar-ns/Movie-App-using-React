@@ -1,17 +1,29 @@
 //always return the new state
-import {ADD_ANIME} from '../actions';
+import {ADD_ANIME,ADD_FAVOURTIE} from '../actions';
 const initialAnimeState = {
     list: [],
     favourites: []
 }
 export default function animes(state=initialAnimeState,action){
-    //state same rehra we are not changing the state
-   if(action.type===ADD_ANIME){ 
-       const newList = { ...state,list:action.animes};
-       return newList;
-   } 
 
-   return state;
+    //in the react community if else state is usually avoided because its not nice and doesnt look good ? bruh
+//     //state same rehra we are not changing the state
+//    if(action.type===ADD_ANIME){ 
+//        const newList = { ...state,list:action.animes};
+//        return newList;
+//    } 
+
+//    return state;
+//we use switch cases
+    switch(action.type){
+        case ADD_ANIME:
+            return { ...state,list:action.animes};
+        case ADD_FAVOURTIE:
+            return { ...state,favourites:[action.anime,...state.favourites]};
+        default:
+            return state;
+
+    }
 }
 
 //UI se add movies ka option woh action par bhejega action
