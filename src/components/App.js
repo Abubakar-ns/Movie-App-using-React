@@ -1,7 +1,9 @@
 import React from 'react';
 import {animedata} from '../Animedata';
 import Navbar from './Navbar';
+import {addAnime} from '../actions';
 import Moviecard from './MovieCard';
+
 class App extends React.Component {
   componentDidMount(){
     const {store} = this.props; //destructuring
@@ -11,10 +13,7 @@ class App extends React.Component {
     })
     //make api call
     //dispatch action
-    store.dispatch({
-        type: 'ADD_MOVIES',
-        animes: animedata
-    });
+    store.dispatch(addAnime(animedata));
     console.log('State',store.getState());
   }
   render(){
