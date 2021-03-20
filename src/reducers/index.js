@@ -1,5 +1,5 @@
 //always return the new state
-import {ADD_ANIME,ADD_FAVOURTIE} from '../actions';
+import {ADD_ANIME,ADD_FAVOURTIE,REMOVE_FROM_FAVOURTIE} from '../actions';
 const initialAnimeState = {
     list: [],
     favourites: []
@@ -20,6 +20,11 @@ export default function animes(state=initialAnimeState,action){
             return { ...state,list:action.animes};
         case ADD_FAVOURTIE:
             return { ...state,favourites:[action.anime,...state.favourites]};
+        case REMOVE_FROM_FAVOURTIE:
+            const filteredArray=state.favourites.filter(
+                animes=>animes.Title!=action.anime.Title
+            );
+            return {...state,favourites:filteredArray};
         default:
             return state;
 
