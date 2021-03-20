@@ -8,7 +8,7 @@ import animes from './reducers';
 
 
 const store = createStore(animes);
-
+ 
 ReactDOM.render(<App store= {store} />,document.getElementById('root'));
 
 

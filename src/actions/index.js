@@ -7,12 +7,12 @@
 // }
 
 //action types
-export const ADD_MOVIES = 'ADD_MOVIES';
+export const ADD_ANIME = 'ADD_ANIME';
 //action creaters
 
 export function addAnime (animes){
     return {
-        type: ADD_MOVIES,
+        type: ADD_ANIME,
         animes //shorthand
     }
 }

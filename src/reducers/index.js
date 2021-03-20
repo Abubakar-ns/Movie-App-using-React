@@ -1,9 +1,14 @@
 //always return the new state
-import {ADD_MOVIES} from '../actions';
-export default function animes(state=[],action){
+import {ADD_ANIME} from '../actions';
+const initialAnimeState = {
+    list: [],
+    favourites: []
+}
+export default function animes(state=initialAnimeState,action){
     //state same rehra we are not changing the state
-   if(action.type===ADD_MOVIES){ 
-       return action.animes;
+   if(action.type===ADD_ANIME){ 
+       const newList = { ...state,list:action.animes};
+       return newList;
    } 
 
    return state;

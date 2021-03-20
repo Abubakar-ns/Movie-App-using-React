@@ -13,11 +13,12 @@ class App extends React.Component {
     })
     //make api call
     //dispatch action
-    store.dispatch(addAnime(animedata));
+     store.dispatch(addAnime(animedata));
     console.log('State',store.getState());
   }
   render(){
-  const anime = this.props.store.getState();
+    const {list} = this.props.store.getState(); //{list:[],favourites:[]}
+  // const animes = this.props.store.getState(); //stae:[]
   return (
     <div className="App">
       <Navbar/>
@@ -27,7 +28,7 @@ class App extends React.Component {
           <div className="tab">Favourites</div>
         </div>
         <div className="List">
-            {animedata.map((anime,index)=>(
+            {list.map((anime,index)=>(
               <Moviecard anime = {anime} key={`anime-${index}`}/>
             ))}
         </div>
