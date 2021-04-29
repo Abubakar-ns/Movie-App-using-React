@@ -4,10 +4,10 @@ import { createStore } from 'redux';
 
 import './index.css';
 import App from './components/App';
-import animes from './reducers';
 
+import rootReducer from './reducers'
 
-const store = createStore(animes);
+const store = createStore(rootReducer);
  
 ReactDOM.render(<App store= {store} />,document.getElementById('root'));
 
