@@ -16,19 +16,18 @@ class MovieCard extends React.Component {
         return (
             <div className="movie-card">
               <div className="left">
-                  <img alt="movie-poster" src={anime.Poster}/>
+                  <img alt="movie-poster" src={anime.image_url}/>
               </div>
               <div className="right">
-                  <div className="title">{anime.Title}</div>
-                  <div className="plot"><span>Rank-{anime.Rank}</span></div>
-                  <div className="plot"><span>Episodes-</span>{anime.Episodes}</div>
-                  <div className="plot"><span>Type-</span>{anime.Type}</div>
+                  <div className="title">{anime.title}</div>
+                  <div className="plot"><span>Episodes-</span>{anime.episodes}</div>
+                  <div className="plot"><span>Type-</span>{anime.type}</div>
                   
 
                   <div className="footer">
-                  <div className="rating">{anime.Released}</div>
-                  <div className="rating"><span>Members-</span>{anime.Members}</div>
-                  <div className="rating">{anime.Score}</div>
+                  {/* <div className="rating">{anime.start_date}</div> */}
+                  <div className="rating"><span>Members-</span>{anime.members}</div>
+                  <div className="rating">{anime.score}</div>
                   {isFavourite
                   ?<button className="unfavourite-btn" onClick={this.handleUnFavouriteClick}>Unfavourite</button>
                   :<button className="favourite-btn" onClick={this.handleFavouriteClick}>Favourite</button>}
